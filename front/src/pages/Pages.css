@@ -1,0 +1,18 @@
+/* Pages.css */
+
+.styled-image {
+    width: 100%;
+    max-width: 15em;
+    height: auto;
+    border: 2px solid #000;
+  }
+  
+  .custom-bullets {
+    list-style-type: disc;
+    margin-top: 0;
+  }
+  
+  .custom-p {
+    padding-left: 1em;
+  }
+  

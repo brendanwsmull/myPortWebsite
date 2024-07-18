@@ -1,0 +1,40 @@
+.page-container {
+    padding: 20px;
+    color: white; /* Set text color to white */
+  }
+  
+  .custom-p {
+    margin-bottom: 20px;
+  }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  
+  .skills-group {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .skill-item {
+    text-align: left;
+    margin: 5px 0; /* Add some spacing between skills */
+  }
+  
+  @media (max-width: 768px) {
+    .skills-container {
+      flex-direction: column;
+    }
+  }
+  
