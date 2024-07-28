@@ -6,7 +6,7 @@ const Projects = () => {
   const [visibleProjects, setVisibleProjects] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/projects")
+    fetch("http://18.219.163.207:5000/api/projects")
       .then((response) => response.json())
       .then((data) => {
         setProjects(data.reverse()); // Reverse the order of projects

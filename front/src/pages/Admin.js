@@ -22,7 +22,7 @@ function Admin() {
   const [deleteSkillName, setDeleteSkillName] = useState("");
 
   const handleLogin = async () => {
-    const response = await fetch("http://localhost:5000/api/login", {
+    const response = await fetch("http://18.219.163.207:5000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function Admin() {
   };
 
   const handleAddProject = async () => {
-    const response = await fetch("http://localhost:5000/api/projects", {
+    const response = await fetch("http://18.219.163.207:5000/api/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ function Admin() {
 
   const handleDeleteProject = async () => {
     const response = await fetch(
-      `http://localhost:5000/api/projects/${deleteTitle}`,
+      `http://18.219.163.207:5000/api/projects/${deleteTitle}`,
       {
         method: "DELETE",
       },
@@ -61,7 +61,7 @@ function Admin() {
   };
 
   const handleAddSkill = async () => {
-    const response = await fetch("http://localhost:5000/api/skills", {
+    const response = await fetch("http://18.219.163.207:5000/api/skills", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +75,7 @@ function Admin() {
 
   const handleDeleteSkill = async () => {
     const response = await fetch(
-      `http://localhost:5000/api/skills/${deleteSkillName}`,
+      `http://18.219.163.207:5000/api/skills/${deleteSkillName}`,
       {
         method: "DELETE",
       },

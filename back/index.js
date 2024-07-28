@@ -83,7 +83,7 @@ app.delete('/api/projects/:title', (req, res) => {
 // Skills API
 app.post('/api/skills', (req, res) => {
   const { typ, skill } = req.body;
-  const query = 'INSERT INTO skills (SIN, typ, skill) VALUES (null, ?, ?)';
+  const query = 'INSERT INTO skills (SID, typ, skill) VALUES (null, ?, ?)';
 
   db.query(query, [typ, skill], (error, results) => {
     if (error) {

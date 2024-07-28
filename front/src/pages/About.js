@@ -5,7 +5,7 @@ function About() {
   const [skills, setSkills] = useState({ languages: [], libraries: [] });
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/skills")
+    fetch("http://18.219.163.207:5000/api/skills")
       .then((response) => response.json())
       .then((data) => {
         const languages = data.filter((skill) => skill.typ === "Lang");
