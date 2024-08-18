@@ -5,6 +5,19 @@ const cors = require('cors');
 const app = express();
 const port = 5000;
 
+// API Key
+const API_KEY = '';
+
+// Middleware to validate API key
+const validateApiKey = (req, res, next) => {
+  const apiKey = req.headers['x-api-key'];
+  if (apiKey && apiKey === API_KEY) {
+    next(); // Allow the request to proceed
+  } else {
+    res.status(401).json({ message: 'Unauthorized: Invalid API key' });
+  }
+};
+
 app.use(cors());
 app.use(express.json());
 
@@ -23,6 +36,7 @@ db.connect((err) => {
   console.log('Connected to database.');
 });
 
+// Public route: Login (does not require API key)
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
   const query = 'SELECT * FROM admins WHERE user = ? AND pass = ?';
@@ -40,7 +54,8 @@ app.post('/api/login', (req, res) => {
   });
 });
 
-app.get('/api/projects', (req, res) => {
+// Protected routes: Require API key
+app.get('/api/projects', validateApiKey, (req, res) => {
   const query = 'SELECT title, summery, b1, b2, b3, b4, b5 FROM projects';
 
   db.query(query, (error, results) => {
@@ -52,7 +67,7 @@ app.get('/api/projects', (req, res) => {
   });
 });
 
-app.post('/api/projects', (req, res) => {
+app.post('/api/projects', validateApiKey, (req, res) => {
   const { title, summery, b1, b2, b3, b4, b5 } = req.body;
   const query = 'INSERT INTO projects (title, summery, b1, b2, b3, b4, b5) VALUES (?, ?, ?, ?, ?, ?, ?)';
 
@@ -66,7 +81,7 @@ app.post('/api/projects', (req, res) => {
   });
 });
 
-app.delete('/api/projects/:title', (req, res) => {
+app.delete('/api/projects/:title', validateApiKey, (req, res) => {
   const title = req.params.title;
   const query = 'DELETE FROM projects WHERE title = ?';
 
@@ -81,7 +96,7 @@ app.delete('/api/projects/:title', (req, res) => {
 });
 
 // Skills API
-app.post('/api/skills', (req, res) => {
+app.post('/api/skills', validateApiKey, (req, res) => {
   const { typ, skill } = req.body;
   const query = 'INSERT INTO skills (SID, typ, skill) VALUES (null, ?, ?)';
 
@@ -95,7 +110,7 @@ app.post('/api/skills', (req, res) => {
   });
 });
 
-app.get('/api/skills', (req, res) => {
+app.get('/api/skills', validateApiKey, (req, res) => {
   const query = 'SELECT typ, skill FROM skills';
 
   db.query(query, (error, results) => {
@@ -107,7 +122,7 @@ app.get('/api/skills', (req, res) => {
   });
 });
 
-app.delete('/api/skills/:skill', (req, res) => {
+app.delete('/api/skills/:skill', validateApiKey, (req, res) => {
   const skill = req.params.skill;
   const query = 'DELETE FROM skills WHERE skill = ?';
 
@@ -121,6 +136,7 @@ app.delete('/api/skills/:skill', (req, res) => {
   });
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

@@ -6,11 +6,15 @@ function EditSkills() {
   const [deleteSkillName, setDeleteSkillName] = useState("");
   const [message, setMessage] = useState("");
 
+  // API key
+  const apiKey = "";
+
   const handleAddSkill = async () => {
     const response = await fetch("http://localhost:5000/api/skills", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-api-key": apiKey,  // Include the API key here
       },
       body: JSON.stringify({ typ: skillType, skill: skillName }),
     });
@@ -22,6 +26,9 @@ function EditSkills() {
   const handleDeleteSkill = async () => {
     const response = await fetch(`http://localhost:5000/api/skills/${deleteSkillName}`, {
       method: "DELETE",
+      headers: {
+        "x-api-key": apiKey,  // Include the API key here
+      },
     });
 
     const data = await response.json();

@@ -4,8 +4,15 @@ import "./About.css"; // Import the CSS file
 function About() {
   const [skills, setSkills] = useState({ languages: [], libraries: [] });
 
+  // API key
+  const apiKey = "";
+
   useEffect(() => {
-    fetch("http://18.219.163.207:5000/api/skills")
+    fetch("http://localhost:5000/api/skills", {
+      headers: {
+        "x-api-key": apiKey,  // Include the API key here
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         const languages = data.filter((skill) => skill.typ === "Lang");
@@ -13,7 +20,7 @@ function About() {
         setSkills({ languages, libraries });
       })
       .catch((error) => console.error("Error fetching skills:", error));
-  }, []);
+  }, [apiKey]);
 
   return (
     <div className="page-container">

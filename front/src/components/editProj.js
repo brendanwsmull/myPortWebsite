@@ -13,11 +13,15 @@ function EditProj() {
   const [deleteTitle, setDeleteTitle] = useState("");
   const [message, setMessage] = useState("");
 
+  // API key
+  const apiKey = "";
+
   const handleAddProject = async () => {
-    const response = await fetch("localhost:5000/api/projects", {
+    const response = await fetch("http://localhost:5000/api/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-api-key": apiKey,  // Include the API key here
       },
       body: JSON.stringify(newProject),
     });
@@ -27,8 +31,11 @@ function EditProj() {
   };
 
   const handleDeleteProject = async () => {
-    const response = await fetch(`localhost/api/projects/${deleteTitle}`, {
+    const response = await fetch(`http://localhost:5000/api/projects/${deleteTitle}`, {
       method: "DELETE",
+      headers: {
+        "x-api-key": apiKey,  // Include the API key here
+      },
     });
 
     const data = await response.json();
