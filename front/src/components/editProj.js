@@ -14,10 +14,10 @@ function EditProj() {
   const [message, setMessage] = useState("");
 
   // API key
-  const apiKey = "";
+  const apiKey = process.env.React_App_Api_Key;
 
   const handleAddProject = async () => {
-    const response = await fetch("http://localhost:5000/api/projects", {
+    const response = await fetch("http://" + process.env.React_App_IP + ":5000/api/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ function EditProj() {
   };
 
   const handleDeleteProject = async () => {
-    const response = await fetch(`http://localhost:5000/api/projects/${deleteTitle}`, {
+    const response = await fetch("http://" + process.env.React_App_IP + ":5000/api/projects/${deleteTitle}", {
       method: "DELETE",
       headers: {
         "x-api-key": apiKey,  // Include the API key here

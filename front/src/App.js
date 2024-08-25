@@ -13,11 +13,11 @@ import Footer from "./components/Footer";
 function App() {
   const [projects, setProjects] = useState([]);
   const [skills, setSkills] = useState({ languages: [], libraries: [] });
-  const apiKey = "";
+  const apiKey = process.env.React_App_Api_Key;
 
   useEffect(() => {
     // Fetch projects once when the app loads
-    fetch("http://localhost:5000/api/projects", {
+    fetch("http://" + process.env.React_App_IP + ":5000/api/projects", {
       headers: {
         "x-api-key": apiKey,  // Include the API key here
       },
@@ -27,7 +27,7 @@ function App() {
       .catch((error) => console.error("Error fetching projects:", error));
 
     // Fetch skills once when the app loads
-    fetch("http://localhost:5000/api/skills", {
+    fetch("http://" + process.env.React_App_IP + ":5000/api/skills", {
       headers: {
         "x-api-key": apiKey,  // Include the API key here
       },

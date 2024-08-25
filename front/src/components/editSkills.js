@@ -7,10 +7,10 @@ function EditSkills() {
   const [message, setMessage] = useState("");
 
   // API key
-  const apiKey = "";
+  const apiKey = process.env.React_App_Api_Key;
 
   const handleAddSkill = async () => {
-    const response = await fetch("http://localhost:5000/api/skills", {
+    const response = await fetch("http://" + process.env.React_App_IP + ":5000/api/skills", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ function EditSkills() {
   };
 
   const handleDeleteSkill = async () => {
-    const response = await fetch(`http://localhost:5000/api/skills/${deleteSkillName}`, {
+    const response = await fetch("http://" + process.env.React_App_IP + ":5000/api/skills/${deleteSkillName}", {
       method: "DELETE",
       headers: {
         "x-api-key": apiKey,  // Include the API key here
