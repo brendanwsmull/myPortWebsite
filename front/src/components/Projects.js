@@ -1,31 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Projects.css"; // Import the CSS file
 
-const Projects = () => {
-  const [projects, setProjects] = useState([]);
+const Projects = ({ projects }) => {  // Receive projects as a prop
   const [visibleProjects, setVisibleProjects] = useState({});
-
-  // API key
-  const apiKey = "";
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/projects", {
-      headers: {
-        "x-api-key": apiKey,  // Include the API key here
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setProjects(data.reverse()); // Reverse the order of projects
-        setVisibleProjects(
-          data.reduce((acc, project, index) => {
-            acc[index] = false;
-            return acc;
-          }, {}),
-        );
-      })
-      .catch((error) => console.error("Error fetching projects:", error));
-  }, [apiKey]);
 
   const toggleVisibility = (index) => {
     setVisibleProjects((prevState) => ({

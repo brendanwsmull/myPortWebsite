@@ -1,27 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./About.css"; // Import the CSS file
 
-function About() {
-  const [skills, setSkills] = useState({ languages: [], libraries: [] });
-
-  // API key
-  const apiKey = "";
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/skills", {
-      headers: {
-        "x-api-key": apiKey,  // Include the API key here
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const languages = data.filter((skill) => skill.typ === "Lang");
-        const libraries = data.filter((skill) => skill.typ === "Lib");
-        setSkills({ languages, libraries });
-      })
-      .catch((error) => console.error("Error fetching skills:", error));
-  }, [apiKey]);
-
+function About({ skills }) {  // Receive skills as a prop
   return (
     <div className="page-container">
       <h1>Learning More About Me</h1>
@@ -60,9 +40,6 @@ function About() {
           </ul>
         </p>
       </div>
-      {/* <p>
-        <h3>Skills:</h3>
-      </p> */}
       <div className="skills-container">
         <div className="skills-group">
           <h3>Languages</h3>
@@ -74,7 +51,7 @@ function About() {
                 </li>
               ))
             ) : (
-              <p>No languages found.</p>
+              <p>Connection Error</p>
             )}
           </ul>
         </div>
@@ -88,7 +65,7 @@ function About() {
                 </li>
               ))
             ) : (
-              <p>No libraries found.</p>
+              <p>Connection Error</p>
             )}
           </ul>
         </div>
