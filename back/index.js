@@ -1,12 +1,13 @@
 const express = require('express');
 const mysql = require('mysql2');
+const env = require('dotenv').config();
 const cors = require('cors');
 
 const app = express();
 const port = 5000;
 
 // API Key
-const API_KEY = '';
+const API_KEY = process.env.Api_Key;
 
 // Middleware to validate API key
 const validateApiKey = (req, res, next) => {
@@ -22,10 +23,10 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: '',
-  user: '',
-  password: '',
-  database: ''
+  host: process.env.DB_Host,
+  user: process.env.DB_User,
+  password: process.env.DB_Password,
+  database: process.env.DB_database
 });
 
 db.connect((err) => {
