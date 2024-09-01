@@ -24,7 +24,7 @@ function EditSkills() {
   };
 
   const handleDeleteSkill = async () => {
-    const response = await fetch("http://" + process.env.React_App_IP + ":5000/api/skills/${deleteSkillName}", {
+    const response = await fetch(`http://` + process.env.React_App_IP + `:5000/api/skills/${deleteSkillName}`, {
       method: "DELETE",
       headers: {
         "x-api-key": apiKey,  // Include the API key here

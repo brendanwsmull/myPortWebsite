@@ -31,7 +31,7 @@ function EditProj() {
   };
 
   const handleDeleteProject = async () => {
-    const response = await fetch("http://" + process.env.React_App_IP + ":5000/api/projects/${deleteTitle}", {
+    const response = await fetch(`http://` + process.env.React_App_IP + `:5000/api/projects/${deleteTitle}`, {
       method: "DELETE",
       headers: {
         "x-api-key": apiKey,  // Include the API key here
