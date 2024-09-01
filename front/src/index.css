@@ -7,15 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(48, 48, 48);
   color: rgb(255, 255, 255);
-  margin-left: 7em;
-  margin-right: 7em;
+  margin-left: 10%; /* Adjusted for a more responsive margin */
+  margin-right: 10%;
 }
 
 /* Mobile Styles */
 @media (max-width: 768px) {
   body {
-    margin-left: 0em; /* Reduce margins on smaller screens */
-    margin-right: 0em;
+    margin-left: 0 !important; /* Forcefully reduce margins on smaller screens */
+    margin-right: 0 !important;
+    padding: 0 10px; /* Add some padding on smaller screens */
   }
 }
 
