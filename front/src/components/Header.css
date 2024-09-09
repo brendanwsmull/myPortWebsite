@@ -1,53 +1,116 @@
-/* Header.css */
-
 .app-container {
-    background-color: #414141; /* Background color for the entire website */
-    min-height: 100vh; /* Ensure the container takes up the full height of the viewport */
+  background-color: #414141; /* Background color for the entire website */
+  min-height: 100vh; /* Ensure the container takes up the full height of the viewport */
+}
+
+.page-container {
+  background-color: #4b4b4b; /* Background color for individual pages */
+  padding: 20px; /* Add some padding to the pages */
+  box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.5);
+}
+
+header {
+  display: flex; /* Use Flexbox */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Align items vertically */
+  background: linear-gradient(to right, #7e7e7e, #000000); /* Subtle gradient from gray to black */
+  font-size: 1.5em;
+  padding: 10px 20px; /* Add padding */
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5); /* Adjusted shadow for depth */
+  position: relative;
+}
+
+.name {
+  order: -1; /* Move the name to the left */
+  margin-left: 20px; /* Add some margin */
+  color: inherit; /* Inherit the color from the header */
+  text-decoration: none; /* Remove underline */
+  cursor: pointer; /* Add a pointer cursor */
+}
+
+.name:hover, .name:focus {
+  color: inherit; /* Prevent color change on hover/focus */
+  text-decoration: none; /* Ensure no underline on hover/focus */
+}
+
+.menu-toggle {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show menu button on mobile */
   }
-  
-  .page-container {
-    background-color: #4b4b4b; /* Background color for individual pages */
-    padding: 20px; /* Add some padding to the pages */
+
+  nav {
+    display: none; /* Hide the nav by default on mobile */
+    position: absolute;
+    padding-left: 1em;
+    top: 60px; /* Position below the header */
+    right: 0;
+    background-color: #4b4b4b;
+    width: 200px;
     box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.5);
   }
-  
-  header {
-    display: flex; /* Use Flexbox */
-    justify-content: space-between; /* Space between items */
-    align-items: center; /* Align items vertically */
-    background-color: #7e7e7e;
-    font-size: 1.5em;
-    padding: 10px 20px; /* Add padding */
-    box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.5);
+
+  nav.nav-open {
+    display: block; /* Show nav when menu is toggled */
   }
-  
+
   nav ul {
-    list-style-type: none; /* Removes the bullet points from the list */
-    padding: 0; /* Removes default padding */
-    margin: 0; /* Remove default margin */
+    display: block; /* Stack nav items vertically */
+    padding: 0;
   }
-  
+
   nav ul li {
-    display: inline; /* Displays list items horizontally */
-    margin-right: 10px; /* Adds space between nav buttons */
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid #7e7e7e;
   }
-  
+
   nav ul li:last-child {
-    margin-right: 0; /* Remove margin from the last nav button */
+    border-bottom: none; /* Remove bottom border from the last item */
   }
-  
+
   nav ul li a {
-    text-decoration: none; /* Removes underline from links */
+    display: block; /* Make links block-level */
     color: #ffffff; /* Default color for nav buttons */
+    text-decoration: none; /* Remove underline from links */
   }
-  
+
   nav ul li a.active {
     color: #ffc400; /* Color for active link */
     font-weight: bold;
   }
-  
-  .name {
-    order: -1; /* Move the name to the left */
-    margin-left: 20px; /* Add some margin */
-  }
-  
+}
+
+nav ul {
+  list-style-type: none; /* Removes the bullet points from the list */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Remove default margin */
+}
+
+nav ul li {
+  display: inline; /* Displays list items horizontally */
+  margin-right: 10px; /* Adds space between nav buttons */
+}
+
+nav ul li:last-child {
+  margin-right: 0; /* Remove margin from the last nav button */
+}
+
+nav ul li a {
+  text-decoration: none; /* Removes underline from links */
+  color: #ffffff; /* Default color for nav buttons */
+}
+
+nav ul li a.active {
+  color: #ffc400; /* Color for active link */
+  font-weight: bold;
+}
